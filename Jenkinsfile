@@ -21,12 +21,15 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                sh '''
-                cp -r ./* /var/www/html/
-                sudo systemctl restart nginx
-                '''
-            }
+        steps {
+            sh '''
+            cp index.html /var/www/html/
+            cp style.css /var/www/html/
+            cp script.js /var/www/html/
+            cp -r images /var/www/html/
+            sudo systemctl restart nginx
+            '''
         }
+    }
     }
 }
